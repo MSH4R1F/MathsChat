@@ -43,7 +43,7 @@
     <div class="container">
       <div class="split-screen">
         <div class="left">
-          <section class="copy">
+          <section class="copy move-up">
             <h1>Maths Chat</h1>
             <p>Chat with students online</p>
           </section>
@@ -70,7 +70,8 @@
               <label for="pwd">Password: </label>
               <input type="password" id = "pwd" name = "pwd" placeholder = "">
               <!-- Need to add a box that has requirements for password -->
-              <i class = "far fa-eye-slash"></i>
+              <i class = "far fa-eye-slash" id = "show-btn" onclick = "show('pwd');"></i>
+              <p class="password-req">Passwords must contain at least 1 uppercase and lowercase letter, number and symbol.</p>
             </div>
             <div class="input-container cta">
               <label for="">
@@ -88,7 +89,7 @@
       </div>
     </div>
   </main>
-
+<script src="../static/js/signup.js"></script>
 </body>
 
 </html>
