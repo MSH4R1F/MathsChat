@@ -94,7 +94,7 @@ label {
   font-size: 12px !important;
 }
 .checkbox-container input {
-  postion:absolute;
+  position:absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
@@ -139,7 +139,7 @@ label {
   top: 45px;
   transform: rotate(45deg);
 }
-.signup-btn {
+.send-btn {
   display: block;
   width: 100%;
   background-color : var(--primary-blue);
