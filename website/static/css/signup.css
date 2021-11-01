@@ -148,7 +148,7 @@ label {
   border: none;
   padding: 1rem;
 }
-.signup-btn:hover {
+.send-btn:hover {
   background: #2c4893;
   cursor: pointer;
 }
