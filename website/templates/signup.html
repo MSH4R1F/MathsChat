@@ -1,96 +1,54 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}{% block title %}Signup{% endblock %} {% block content %}
 
 <head>
-  <meta charset="utf-8">
-  <title>Signup</title>
-  <meta name="author" content="">
-  <meta name="description" content="">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="../static/css/styles.css" rel="stylesheet">
-  <link href="../static/css/signup.css" rel="stylesheet">
-  <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/signup.css')}}">
 </head>
-<body>
-  <nav class="navbar navbar-expand-md navbar-light ">
-    <div class="container-fluid" >
-       <a href="index.html" class="navbar-brand">
-         <img src="../static/img/logo.png" alt="">
-       </a>
-         <button class="navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbarResponsive">
-           <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse parent" id = "navbarResponsive">
-           <div class="buttons">
-           <ul class="navbar-nav ml-auto nav-buttons" >
-             <li class="nav-item active" >
-               <a href="/login" class="nav-link">Login</a>
-             </li>
-             <li class="nav-item">
-               <a href="/signup" class="nav-link">Signup</a>
-             </li>
-           </ul>
-           </div>
-         </div>
-       </a>
-    </div>
-  </nav>
-  <main>
-    <div class="container">
-      <div class="split-screen">
-        <div class="left">
-          <section class="copy move-up">
+<div class="split-screen">
+    <div class="left">
+        <section class="copy move-up">
             <h1>Maths Chat</h1>
             <p>Chat with students online</p>
-          </section>
-        </div>
-        <div class="right">
-          <form action="">
+        </section>
+    </div>
+    <div class="right">
+        <form method="POST">
             <section class="copy">
-              <h2>Sign Up</h2>
-              <div class="login-container">
-                <p>Already have an account? <a href="/login"><strong>Login</strong></a></p>
-              </div>
+                <h2>Sign Up</h2>
+                <div class="login-container">
+                    <p>Already have an account? <a href="/login"><strong>Login</strong></a></p>
+                </div>
             </section>
             <div class="input-container name">
-              <label for="uname">Username: </label>
-              <input type="text" id = "uname" name = "uname">
+                <label for="uname">Username: </label>
+                <input type="text" id="uname" name="uname">
             </div>
 
             <div class="input-container email">
-              <label for="uname">Email: </label>
-              <input type="email" id = "email" name = "email">
+                <label for="uname">Email: </label>
+                <input type="email" id="email" name="email">
             </div>
 
             <div class="input-container password ">
-              <label for="pwd">Password: </label>
-              <input type="password" id = "pwd" name = "pwd" placeholder = "">
-              <!-- Need to add a box that has requirements for password -->
-              <i class = "far fa-eye-slash" id = "show-btn" onclick = "show('pwd');"></i>
-              <p class="password-req">Passwords must contain at least 1 uppercase and lowercase letter, number and symbol.</p>
+                <label for="pwd">Password: </label>
+                <input type="password" id="pwd" name="pwd" placeholder="">
+                <!-- Need to add a box that has requirements for password -->
+                <i class="far fa-eye-slash" id="show-btn" onclick="show('pwd');"></i>
+                <p class="password-req">Passwords must contain at least 1 uppercase and lowercase letter, number and symbol.</p>
             </div>
             <div class="input-container cta">
-              <label for="">
+                <label for="">
                 <input type="checkbox">
                 <span class="checkmark"></span>
                 Sign up for Email
               </label>
             </div>
-            <button class="send-btn" type = "submit">Sign Up</button>
+            <button class="send-btn" type="submit">Sign Up</button>
             <section class="copy legal">
-              <p><span class="small">By continuing you agree to agree with Mohamed Sharif's terms and conditions</span></p>
+                <p><span class="small">By continuing you agree to agree with Mohamed Sharif's terms and conditions</span></p>
             </section>
-          </form>
-        </div>
-      </div>
+        </form>
     </div>
-  </main>
+</div>
+</div>
 <script src="../static/js/signup.js"></script>
-</body>
-
-</html>
+{% endblock content %}
