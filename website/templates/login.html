@@ -2,6 +2,8 @@
 
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename ='css/signup.css')}}">
+    <link rel="shortcut icon" href="#" />
+
 </head>
 <div class="split-screen">
     <div class="left">
@@ -11,7 +13,7 @@
         </section>
     </div>
     <div class="right">
-        <form method="POST">
+        <form method="POST" onsubmit="return validate(event);">
             <section class="copy">
                 <h2>Login</h2>
                 <div class="login-container">
@@ -34,4 +36,5 @@
     </div>
 </div>
 <script src="../static/js/login.js"></script>
+<script src="../static/js/signup.js"></script>
 {% endblock content %}

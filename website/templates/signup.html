@@ -2,6 +2,7 @@
 
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename ='css/signup.css')}}">
+    <link rel="shortcut icon" href="#" />
 </head>
 <div class="split-screen">
     <div class="left">
@@ -11,7 +12,7 @@
         </section>
     </div>
     <div class="right">
-        <form method="POST">
+        <form method="POST" onsubmit="return validate(event);">
             <section class="copy">
                 <h2>Sign Up</h2>
                 <div class="login-container">
@@ -20,11 +21,11 @@
             </section>
             <div class="input-container name">
                 <label for="uname">Username: </label>
-                <input type="text" id="uname" name="uname">
+                <input type="text" id="uname" name="uname" maxlength="30">
             </div>
 
             <div class="input-container email">
-                <label for="uname">Email: </label>
+                <label for="email">Email: </label>
                 <input type="email" id="email" name="email">
             </div>
 
@@ -42,6 +43,7 @@
                 Sign up for Email
               </label>
             </div>
+
             <button class="send-btn" type="submit">Sign Up</button>
             <section class="copy legal">
                 <p><span class="small">By continuing you agree to agree with Mohamed Sharif's terms and conditions</span></p>
