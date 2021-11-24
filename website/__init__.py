@@ -20,7 +20,7 @@ def create_app():
     # url prefix so url for homepage would be https://127.0.0.1:5000/
 
 
-    # Note to self register auth blueprint
+    # Register auth blueprint
     from .auth import auth
     app.register_blueprint(auth, url_prefix='/')
     return app

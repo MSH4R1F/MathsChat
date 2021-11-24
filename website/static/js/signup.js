@@ -15,19 +15,32 @@ function show(pwd) {
 }
 
 // var paswd = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,30}$/;
+
+function error_msg(text) {
+    // console.log(text);
+    // var test = document.createElement('div');
+    // text = document.createTextNode(text);
+    // test.append(text)
+    // document.getElementById("pre-check").appendChild(test);
+    // let block = document.getElementById("pre-check");
+    // block.classList.add("alert alert-success alert-dismissible fade show");
+    alert(text);
+}
+
 function validate(e) {
     var pwd = document.getElementById("pwd").value;
     if (pwd.length < 8) {
-        alert("Password not long enough");
+        error_msg("Password not long enough");
+        console.log("PAssword ")
         return false;
     } else if (pwd.search(/[a-z]/) < 0) {
-        alert("Your password needs a lowercase letter");
+        error_msg("Your password needs a lowercase letter");
         return false;
     } else if (pwd.search(/[A-Z]/) < 0) {
-        alert("Your password needs an uppercase letter");
+        error_msg("Your password needs an uppercase letter");
         return false;
     } else if (pwd.search(/[0-9]/) < 0) {
-        alert("Your password requires a number. ");
+        error_msg("Your password requires a number. ");
         return false;
     } else {
         return true;
