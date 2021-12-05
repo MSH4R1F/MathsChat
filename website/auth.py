@@ -26,7 +26,9 @@ auth = Blueprint('auth', __name__)
 # Setting up routes for signup and login with methods GET and POST as we would be sending data to our backend
 # Importing hashlib for password
 import hashlib
-
+# Importing these functions to login in our user and store our current user in current_user
+# Current user is an object that stores our current user and we could use it in conjunction with UserMixing
+from flask_login import login_user, login_required, logout_user, current_user
 class HashPassword:
     def __init__(self,value):
         self.value = value
@@ -96,8 +98,10 @@ def signup():
             # issue an INSERT statement for the database
             db.session.commit()
             # Commits it so the user has an id
+            login_user(new_user,remember =True)
+
             flash('Account created', category = 'success')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.LHome'))
             
 
 
@@ -119,8 +123,10 @@ def login():
         if user:
             if UserPasswordClass.checkHashes(user.password):
                 flash('Logged in successfully! :)', category = 'success')
+                # logins in our user and remembers it so they still logged in unless app resets or they clear their browsing
+                login_user(user,remember=True)
                 # Redirects user to homepage.
-                return redirect(url_for('views.home')) 
+                return redirect(url_for('views.LHome')) 
             else:
                 flash('Incorrect password, Try Again :(', category = 'error')
         else:
@@ -129,7 +135,9 @@ def login():
 
     return render_template("login.html")
  
- 
+# login_required requires the user to be logged in, to access the page so we can prevent the user from logging out when hes not even logged in the first place. 
 @auth.route("/logout")
+@login_required
 def logout():
-    return "<h1>Logged Out</h1>"
+    # Redirects them to the login page in case they want to login again.
+    return redirect(url_for("auth.login"))

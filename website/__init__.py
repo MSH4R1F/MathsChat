@@ -16,7 +16,8 @@ db = SQLAlchemy()
 DB_NAME = "database.db"
 # The file name of our database
 
-
+# Using this module we can tell our flask app how we actually login in our user.
+from flask_login import LoginManager
 
 def create_app():
     app = Flask(__name__)
@@ -45,6 +46,20 @@ def create_app():
     
     from .models import User
     create_db(app)
+
+    # Managing how the user is logged in
+    login_manager = LoginManager()
+    # Creating the application
+    #This is the file where the app would redirect us if were not logged in
+    login_manager.login_view = 'views.home'
+    login_manager.init_app(app)
+
+    # This callback is used to reload the user object from the user ID stored in the session.
+    # Telling the app how to load a user.
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+
 
     return app
 
