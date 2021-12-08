@@ -101,13 +101,13 @@ def signup():
             login_user(new_user,remember =True)
 
             flash('Account created', category = 'success')
-            return redirect(url_for('views.LHome'))
+            return redirect(url_for('views.home'))
             
 
 
         print(username,password,email)
     # Returning the signup html page
-    return render_template("signup.html")
+    return render_template("signup.html", user = current_user)
  
 @auth.route("/login", methods = ['GET', 'POST'])
 def login():
@@ -126,18 +126,21 @@ def login():
                 # logins in our user and remembers it so they still logged in unless app resets or they clear their browsing
                 login_user(user,remember=True)
                 # Redirects user to homepage.
-                return redirect(url_for('views.LHome')) 
+                return redirect(url_for('views.home')) 
             else:
                 flash('Incorrect password, Try Again :(', category = 'error')
         else:
             flash('Unknown User :0. Signup now', category = 'error')
 
 
-    return render_template("login.html")
+    return render_template("login.html",user = current_user)
  
 # login_required requires the user to be logged in, to access the page so we can prevent the user from logging out when hes not even logged in the first place. 
 @auth.route("/logout")
 @login_required
 def logout():
     # Redirects them to the login page in case they want to login again.
+    logout_user()
     return redirect(url_for("auth.login"))
+
+

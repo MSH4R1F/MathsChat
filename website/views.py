@@ -4,14 +4,15 @@ from flask import Blueprint, render_template
 # Setting up a blueprint for our application
 views = Blueprint('views', __name__)
 
-## Note to self, do the same for auth.py
-
+from flask_login import login_required,current_user
 # Defining the route for my homepage
 # This is a decorator that would run all the functions below it
 @views.route('/')
-def home():
-    return render_template("index.html")
+def index():
+    return render_template("index.html",user=current_user)
+
 
 @views.route('/home')
-def LHome():
-    return render_template("home.html")
+@login_required
+def home():
+    return render_template("home.html",user=current_user)

@@ -51,7 +51,7 @@ def create_app():
     login_manager = LoginManager()
     # Creating the application
     #This is the file where the app would redirect us if were not logged in
-    login_manager.login_view = 'views.home'
+    login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
     # This callback is used to reload the user object from the user ID stored in the session.
