@@ -1,6 +1,6 @@
 # This will store all the main views or URL endpoints for the website.
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template,request
 # Setting up a blueprint for our application
 views = Blueprint('views', __name__)
 
@@ -12,7 +12,11 @@ def index():
     return render_template("index.html",user=current_user)
 
 
-@views.route('/home')
+@views.route('/home', methods = ['GET', 'POST'])
 @login_required
 def home():
+    # Get the join code from home.html
+    if request.method == "POST":
+        code = request.form["code"]
+        print(code)
     return render_template("home.html",user=current_user)

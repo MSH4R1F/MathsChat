@@ -44,6 +44,10 @@ def create_app():
     from .auth import auth
     app.register_blueprint(auth, url_prefix='/')
     
+    # Register chat blueprint
+    from .chat import chat
+    app.register_blueprint(chat, url_prefix = '/chat')
+    
     from .models import User
     create_db(app)
 

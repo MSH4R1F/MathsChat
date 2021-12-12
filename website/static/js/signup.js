@@ -31,7 +31,6 @@ function validate(e) {
     var pwd = document.getElementById("pwd").value;
     if (pwd.length < 8) {
         error_msg("Password not long enough");
-        console.log("PAssword ")
         return false;
     } else if (pwd.search(/[a-z]/) < 0) {
         error_msg("Your password needs a lowercase letter");
