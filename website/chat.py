@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template,request
 
 # Setting up a blueprint for chats
-chat = Blueprint('chats', __name__)
+chat = Blueprint('chat', __name__)
 
 
 from flask_login import login_required,current_user
@@ -17,4 +17,5 @@ def chat_home():
 @chat.route('/<id>')
 @login_required
 def chat_room(id):
+    # Adding parametrs the current user and the id or the room code.
     return render_template("chat_room.html", user=current_user,id=id)
