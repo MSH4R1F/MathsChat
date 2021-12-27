@@ -3,13 +3,16 @@
 
 
 from flask import Flask
-
+from flask_socketio import SocketIO
 from flask_sqlalchemy import SQLAlchemy
 # Importing our database library
 
 from os import path
 # Importing path so we can check database exists
 
+
+# Creating my socketio app selecting an asynchronous framework alongside it.
+socketio = SocketIO()
 
 db = SQLAlchemy()
 # Creating the database object first and then configuring it in create_app()
@@ -64,7 +67,9 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))
 
-
+    async_mode = None
+    # Creating my socketio app selecting an asynchronous framework alongside it.
+    socketio.init_app(app)
     return app
 
 

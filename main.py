@@ -1,8 +1,16 @@
-from website import create_app
+from website import create_app, socketio
 from flask_socketio import SocketIO
 # Creating an instance of our flask app
 app = create_app()
-socketio = SocketIO(app)
+
+
+
+
+
+
+
+
+
 # Using this to protect users from accidentally invoking the script when they don't intend to.
 if __name__ == "__main__":
     socketio.run(app,debug=True)

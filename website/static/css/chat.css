@@ -34,7 +34,7 @@ a {
 
 .sidebar {
     padding: 20px 20px 60px;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 500px;
 }
 
@@ -53,20 +53,26 @@ a {
 
 .chat-messages {
     padding: 30px;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 500px;
 }
 
 .chat-messages .message {
     padding: 10px;
     margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px black solid;
+    background-color: #A0A0A0;
+    min-width: 20%;
+    max-width: 70%;
+    animation: fadeIn 0.4s;
 }
 
 .form-container {
     padding: 20px 30px;
 }
 
-.form-container form {
+.form-container {
     display: flex;
 }
 
@@ -74,6 +80,18 @@ a {
     padding: 5px;
     height: 40px;
     flex: 1;
+}
+
+.sender {
+    justify-content: flex-end;
+}
+
+.recipient {
+    justify-content: flex-start;
+}
+
+.message-container {
+    display: flex;
 }
 
 @media (max-width: 700px) {
