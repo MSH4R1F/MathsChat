@@ -21,17 +21,36 @@ $(document).ready(function() {
     socket.on('userList', function(data) {
         console.log(data.msg);
     });
+
     socket.on('message', function(data) {
         console.log(data);
         if (data.sender == "true") {
-            $('#chat-msg').append("<div class='message-container sender'><div class = 'message'><p class = 'meta'> " + data.name + " <span>" + data.time + "</span></p><p class='text'>" + data.msg + "</p></div></div>");
+            $('#chat-msg').append("<div class='message-container sender'><div class = 'message'> <p class = 'meta'> " + data.name + " <span>" + data.time + "</span></p><p class='text'>" + data.msg + "</p></div></div>");
             var element = document.getElementById("chat-msg");
+            renderMathInElement(element, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true }
+                ],
+                // • rendering keys, e.g.:
+            });
             element.scrollTop = element.scrollHeight;
 
         } else {
 
             $('#chat-msg').append("<div class='message-container recipient'><div class = 'message'><p class = 'meta'> " + data.name + " <span>" + data.time + "</span></p><p class='text'>" + data.msg + "</p></div></div>");
             var element = document.getElementById("chat-msg");
+            renderMathInElement(element, {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true }
+                ],
+                // • rendering keys, e.g.:
+            });
             element.scrollTop = element.scrollHeight;
 
         }

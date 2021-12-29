@@ -17,6 +17,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ url_for('static', filename = 'js/chat.js')}}"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                // customised options
+                // • auto-render specific keys, e.g.:
+                delimiters: [{
+                    left: '$$',
+                    right: '$$',
+                    display: true
+                }, {
+                    left: '$',
+                    right: '$',
+                    display: false
+                }, {
+                    left: '\\(',
+                    right: '\\)',
+                    display: false
+                }, {
+                    left: '\\[',
+                    right: '\\]',
+                    display: true
+                }],
+                // • rendering keys, e.g.:
+                throwOnError: false
+            });
+        });
+    </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../static/css/styles.css" rel="stylesheet">
@@ -34,10 +70,9 @@
             <div class="sidebar">
                 <h3>Room name: {{ id }}</h3>
                 <h2 id="room-name">Maths: </h2>
-                <h3><i class="fas fa-users"></i>Users:</h3>
-                <ul id="users">
-
-                </ul>
+                <div class="tip">
+                    <p>To render your Latex, enclose your Latex code in double $.</p>
+                </div>
             </div>
             <div class="chat-messages" id="chat-msg">
             </div>

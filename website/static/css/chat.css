@@ -102,3 +102,48 @@ a {
         display: none;
     }
 }
+
+.kebab {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 16px;
+    top: 12px;
+}
+
+figure {
+    width: 6px;
+    height: 6px;
+    border-radius: 5px;
+    background: #00bcd4;
+    margin: 3px 0;
+}
+
+.middle {
+    transform: scale(1);
+    position: relative;
+    box-shadow: 0 0.1px 0.1px 0 rgba(0, 0, 0, 0.16), 0 0.1px 0.3px 0 rgba(0, 0, 0, 0.12);
+    -webkit-filter: blur(.1px);
+    filter: blur(.1px);
+}
+
+.middle.active {
+    transform: scale(4.5);
+    box-shadow: 0 0.1px 0.1px 0 rgba(0, 0, 0, 0.16), 0 0.1px 0.3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.cross {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    margin-top: -1px;
+    color: white;
+    font-size: 22px;
+    user-select: none;
+}
+
+.cross.active {
+    transform: translate(-50%, -50%) scale(1);
+}
