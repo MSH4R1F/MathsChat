@@ -15,8 +15,8 @@
         <h2 style="text-align: center;">Hello {{ current_user.username }}</h2>
 
         <div class="links" style="width:100%;">
-            <button type="button" class="redirect1 btn btn-dark">Create Room</button>
-            <button type="button" class="redirect1 btn btn-dark" data-bs-toggle="collapse" data-bs-target="#join-code" aria-expanded="false" aria-controls="join-code">Join</button>
+            <button type="button" class="redirect1 btn btn-dark" data-bs-toggle="collapse" data-parent=".links" data-bs-target="#create-room" aria-expanded="false" aria-controls="create-room">Create Room</button>
+            <button type="button" class="redirect1 btn btn-dark" data-bs-toggle="collapse" data-parent=".links" data-bs-target="#join-code" aria-expanded="false" aria-controls="join-code">Join</button>
 
         </div>
         <form method="POST" onsubmit="return validate_code(event);">
@@ -24,6 +24,16 @@
 
                 <input type="text" name="code" class="form-control" id="code" placeholder="Code" maxlength="6">
 
+
+            </div>
+        </form>
+        <form method="POST">
+            <div class="collapse form-floating" id="create-room">
+
+                <input type="text" name="create-code" class="form-control" id="create-code" placeholder="Code" maxlength="6">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+                <input type="text" name="description" class="form-control" id="description" placeholder="Summary">
+                <input class="btn btn-primary" type="submit" value="Submit">
 
             </div>
         </form>

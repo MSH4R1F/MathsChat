@@ -14,4 +14,18 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(160))
 
 
+class Rooms(db.Model):
+    # Room names
+    id = db.Column(db.String(50), primary_key=True)
+    
+    name = db.Column(db.String(160))
+
+    description = db.Column(db.String(1000))
+    
+    def __init__(self,id, name, description):
+        self.id  = id
+        self.name = name
+        self.decription = description
+        
+
 

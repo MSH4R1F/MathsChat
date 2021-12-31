@@ -12,3 +12,7 @@ function validate_code(e) {
         return true;
     }
 }
+// Whenever a BUTTON is clicked, all sections become collapsed. Then bootstrap opens the one you selected.
+$('button').click(function(e) {
+    $('.collapse').collapse('hide');
+});

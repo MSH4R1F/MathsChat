@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template,request, session   
+from flask import Blueprint, render_template,request, session  , flash,redirect
 
 # Setting up a blueprint for chats
 chat = Blueprint('chat', __name__)
@@ -13,13 +13,13 @@ from flask_login import login_required,current_user
 # Importing all the modules required for socketIO on my chat platform
 from flask_socketio import SocketIO, emit, join_room, leave_room, close_room, rooms, disconnect
 
-# When the join code is not given return chat.html
+from flask.helpers import url_for
+
+from . import db
+from .models import *
 
 
-@chat.route('/')
-@login_required
-def chat_home():
-    return render_template("chat.html")
+
 
 
 # Making a route for our join codes.
@@ -27,6 +27,12 @@ def chat_home():
 @login_required
 def chat_room(id):
     # Adding parametrs the current user and the id or the room code.
+    active_rooms = []
+    for instance in db.session.query(Rooms).order_by(Rooms.id):
+        active_rooms.append(instance.id)
+    if id not in active_rooms:
+        flash("No room active witht that", category="error")
+        return redirect(url_for('views.home'))
     session['room'] = id
     session['name'] = current_user.username
     print(session)

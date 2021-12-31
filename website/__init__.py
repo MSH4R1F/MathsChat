@@ -51,7 +51,7 @@ def create_app():
     from .chat import chat
     app.register_blueprint(chat, url_prefix = '/chat')
     
-    from .models import User
+    from .models import User, Rooms
     create_db(app)
 
     # Managing how the user is logged in
