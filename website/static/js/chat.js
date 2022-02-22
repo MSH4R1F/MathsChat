@@ -55,7 +55,7 @@ $(document).ready(function() {
 
         }
     });
-
+    
     $('#msg').keypress(function(e) {
 
         var code = e.keyCode || e.which;
@@ -70,7 +70,9 @@ $(document).ready(function() {
 
 function leave_room() {
     socket.emit('leave', {}, function() {
+        // Disconnects the user from the server
         socket.disconnect();
+        //Redirects User to the homepage
         window.location.href = "{{ url_for(views.home)) }}";
     });
 };

@@ -2,5 +2,10 @@
 
 <body>
     <h1>Rooms</h1>
+    {% for item in data %}
+    <!--Creating a div for each room displayed-->
+    <div class="room">Link:
+        <a href='./{{ item[0] }}'>{{ item[0] }}</a>, Name: {{ item[1] }}, Description: {{ item[2] }}</div>
+    {% endfor %}
 </body>
 {% endblock content %}

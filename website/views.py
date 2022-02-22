@@ -33,6 +33,7 @@ def home():
             code = request.form["create-code"]
             name = request.form["name"]
             description = request.form["description"]
+            print(description)
             # Creating our room and adding it to our database
             new_room = Rooms(code,name,description)
             db.session.add(new_room)

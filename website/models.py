@@ -16,16 +16,18 @@ class User(db.Model, UserMixin):
 
 class Rooms(db.Model):
     # Room names
+    # The Room ID would be the primary key
     id = db.Column(db.String(50), primary_key=True)
     
     name = db.Column(db.String(160))
 
     description = db.Column(db.String(1000))
     
+    # Constructor
     def __init__(self,id, name, description):
         self.id  = id
         self.name = name
-        self.decription = description
+        self.description = description
         
 
 

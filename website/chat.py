@@ -20,8 +20,6 @@ from .models import *
 
 
 
-
-
 # Making a route for our join codes.
 @chat.route('/<id>')
 @login_required
@@ -37,6 +35,19 @@ def chat_room(id):
     session['name'] = current_user.username
     print(session)
     return render_template("chat_room.html", name=current_user.username,room = id)
+
+# A new route to display all the links of the rooms active
+@chat.route('/rooms')
+@login_required
+def room():
+    active_rooms = []
+    # Adding all active rooms and names and descriptions to list.
+    # First grabbing all the room ids, room descriptions and room names
+    for instance in db.session.query(Rooms).order_by(Rooms.id):
+        active_rooms.append([instance.id,instance.name,instance.description])
+    
+    # Returning list of rooms alongside html page.
+    return render_template('rooms.html',user=current_user,data =active_rooms)
 
 
 @socketio.event
@@ -73,13 +84,13 @@ def text(message):
     """
     print(message)
     room = session.get('room')
-    
+    # Get current time to send alongside message as metadata
     now = datetime.now()
     current_time  = now.strftime("%H:%M:%S")
     
     # Emit the message with name
-    # Send to sender only
     emit('message', {'msg':message['msg'], 'name': session.get('name'), 'time': current_time, 'sender': 'false'}, room = room,include_self= False)
+    # Send to sender only
     emit('message', {'msg':message['msg'], 'name': session.get('name'), 'time': current_time, 'sender': 'true'}, broadcast = False)
 
 
